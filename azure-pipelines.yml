@@ -13,7 +13,7 @@ jobs:
         displayName: 'Run linter'
       - script: 'yarn compile'
         displayName: 'Compile sources'
-      - script: 'yarn test --silent'
+      - script: 'yarn test'
         displayName: 'Run tests'
   - job: macOS
     pool:
@@ -29,7 +29,7 @@ jobs:
         displayName: 'Run linter'
       - script: 'yarn compile'
         displayName: 'Compile sources'
-      - script: 'yarn test --silent'
+      - script: 'yarn test'
         displayName: 'Run tests'
   - job: Linux
     pool:
@@ -50,5 +50,7 @@ jobs:
           /usr/bin/Xvfb :10 -ac >> /tmp/Xvfb.out 2>&1 &
           disown -ar
         displayName: 'Start xvfb'
-      - script: 'yarn test --silent'
+      - script: 'yarn test'
         displayName: 'Run tests'
+        env:
+          DISPLAY: :10
